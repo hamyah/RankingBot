@@ -16,7 +16,7 @@ if('IS_HEROKU' not in os.environ):
     DISC_TOKEN = os.getenv('DISCORD_TOKEN')
     DB_TOKEN = os.getenv('DB_TOKEN')
 else:
-    DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
+    DISC_TOKEN = os.environ['DISCORD_TOKEN']
     DB_TOKEN = os.environ['DB_TOKEN']
 
 bot = commands.Bot(command_prefix="r-")

@@ -1,6 +1,8 @@
 # Ranking Bot
 A simple discord bot that allows users to create, manage and track ranking bots.
 
+- Add the bot to your server: <a href="https://discord.com/api/oauth2/authorize?client_id=821496208295723019&permissions=0&scope=bot"> [link] </a>
+
 ## Command List
 **Bot prefix:**  `` r- ``
 

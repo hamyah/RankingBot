@@ -65,26 +65,26 @@ async def new_ranking_board(ctx, board_name=""):
 
 @bot.command(name='close', help="Deletes a given board")
 async def delete_ranking_board(ctx, board_name=""):
-    #try:
-    #try to connect to database
-    if(dbclient == None):
-        if(not connectDatabase()):
+    try:
+        #try to connect to database
+        if(dbclient == None):
+            if(not connectDatabase()):
+                return
+
+        if(board_name == ""):
+            response = ">>> Please include the name of the ranking board you are trying to delete."
+            await ctx.send(response)
             return
 
-    if(board_name == ""):
-        response = ">>> Please include the name of the ranking board you are trying to delete."
-        await ctx.send(response)
-        return
+        if(board_name not in dbclient.main.list_collection_names()):
+            response = ">>> The board " + board_name + " does not exist."
+            await ctx.send(response)
+            return
 
-    if(board_name not in dbclient.main.list_collection_names()):
-        response = ">>> The board " + board_name + " does not exist."
-        await ctx.send(response)
-        return
-
-    dbclient.main[board_name].drop()
-    response = ">>> **Deleted " + board_name + " board**."
-    #except:
-    #    response = ">>> **Error** when deleting the board. PLease try again."
+        dbclient.main[board_name].drop()
+        response = ">>> **Deleted " + board_name + " board**."
+    except:
+        response = ">>> **Error** when deleting the board. PLease try again."
     
     await ctx.send(response)
 

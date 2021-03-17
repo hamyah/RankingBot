@@ -4,7 +4,7 @@ A simple discord bot that allows users to create, manage and track ranking bots.
 ## Command List
 **Bot prefix:**  `` r- ``
 
-**Usage:**\
+**Usage:**
 
 ``r-add [board-name] [player-name]`` - Adds a new player to a given board\
 ``r-board [board-name]`` - Creates a new ranking board\

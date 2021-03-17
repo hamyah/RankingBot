@@ -1,1 +1,1 @@
-worker: rankingBot.py
+worker: python3 rankingBot.py

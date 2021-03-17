@@ -16,4 +16,4 @@ A simple discord bot that allows users to create, manage and track ranking bots.
 ``r-reset [board-name]`` - Resets the score on a given board\
 ``r-rm [board-name] [player-name]`` - Removes a player from a given board\
 ``r-top [board-name]`` - Shows the current ranking of the given ranking board\
-``r-up [board-name] [player-name] [points]`` - Adds points to this player in this ranking board\
+``r-up [board-name] [player-name] [points]`` - Adds points to this player in this ranking board

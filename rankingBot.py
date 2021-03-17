@@ -1,7 +1,9 @@
 import os
 
 from discord.ext import commands
-from dotenv import load_dotenv
+
+if('IS_HEROKU' not in os.environ):
+    from dotenv import load_dotenv
 
 import pymongo
 from pymongo import MongoClient
@@ -9,9 +11,13 @@ from bson.objectid import ObjectId
 
 from datetime import datetime
 
-load_dotenv()
-DISC_TOKEN = os.getenv('DISCORD_TOKEN')
-DB_TOKEN = os.getenv('DB_TOKEN')
+if('IS_HEROKU' not in os.environ):
+    load_dotenv()
+    DISC_TOKEN = os.getenv('DISCORD_TOKEN')
+    DB_TOKEN = os.getenv('DB_TOKEN')
+else:
+    DISCORD_TOKEN = os.environ['DISCORD_TOKEN']
+    DB_TOKEN = os.environ['DB_TOKEN']
 
 bot = commands.Bot(command_prefix="r-")
 

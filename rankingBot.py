@@ -243,22 +243,37 @@ async def show_board_ranking(ctx, board_name=""):
         response = ">>> **Ranking " + board_name + ":**"
         
         place = 1
+        tied = 1
+        current_place = place
+
+        previous_player = None
 
         for p in players:
-            response += "\n\t"
-            if(place <= 3):
-                response += "**" + str(place) + "º**"
+            if(previous_player != None and p['score'] == previous_player['score']):
+                tied += 1
+                current_place = place-(tied-1)
             else:
-                response += str(place) + "º"
-            response += "\t-\t" + str(p['score']) + "\t-\t" + p['player_name']
+                tied = 1
+                current_place = place
 
-            if(place == 3):
+            if(current_place == 4):
                 response += "\n\t----------------"
+
+            response += "\n\t"
+
+            if(place <= 3):
+                response += "**" + str(current_place) + "º**"
+            else:
+                response += str(current_place) + "º"
+            response += "\t-\t" + str(p['score']) + "\t-\t" + p['player_name']
 
             place += 1
 
+            if(previous_player == None):
+                previous_player = p
+
     except:
-        response = ">>> **Error**. PLease try again."
+        response += ">>> **Error**. Please try again."
     
     await ctx.send(response)
 

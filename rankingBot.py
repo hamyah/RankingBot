@@ -269,8 +269,7 @@ async def show_board_ranking(ctx, board_name=""):
 
             place += 1
 
-            if(previous_player == None):
-                previous_player = p
+            previous_player = p
 
     except:
         response += ">>> **Error**. Please try again."
